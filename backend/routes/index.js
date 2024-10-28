@@ -3,7 +3,8 @@ const router = express.Router();
 const userRouter = require("./user");
 const bankRouter = require("./bank");
 
-router.get("/user" , userRouter);
-router.get("/bank",bankRouter);
+router.use("/user" , userRouter);
+router.use("/bank",bankRouter);
+
 
 module.exports = router;
