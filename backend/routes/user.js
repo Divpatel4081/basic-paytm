@@ -12,7 +12,7 @@ router.get("/" , (req, res) => {
 //sign-up route
 
 const signupSchema = zod.object({
-    firstName:zod.string().email(),
+    firstName:zod.string(),
     lastName:zod.string(),
     username:zod.string(),
     password:zod.string(),
@@ -20,11 +20,12 @@ const signupSchema = zod.object({
 
 router.post("/signup", async (req,res) => {
     const body = req.body;
+    console.log(req.body);
     //input validation
     const {success} = signupSchema.safeParse(body);
     if(!success){
         return res.json({
-            message:"email already taken | incorrect input"
+            message:"incorrect input"
         })
     }
 
@@ -32,7 +33,7 @@ router.post("/signup", async (req,res) => {
     const user = await User.findOne({
         username: body.username,   
     });
-    if(user._id){
+    if(user){
         return res.json({
             message:"email already taken"
         })
@@ -57,8 +58,8 @@ router.post("/signup", async (req,res) => {
 
 //sign-in route
 const signInSchema = zod.object({
-    username:zod.string().email(),
-    password:zod.string().min(6),
+    username:zod.string(),
+    password:zod.string(),
 })
 router.post("/signin" , async (req,res) => {
     const body = req.body;
@@ -74,7 +75,7 @@ router.post("/signin" , async (req,res) => {
     const dbUser = await User.findOne({
         username:body.username
     })
-    if(!dbUser._id){
+    if(!dbUser){
         return res.json({
             message:"Please sign-up first",
         })   

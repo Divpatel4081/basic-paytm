@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
-mongoose.connect("mongodb://localhost:27017/paytmBasic");
 
+mongoose.connect("mongodb://localhost:27017/paytmBasic");
 const userSchema = new mongoose.Schema({
     firstName: String,
     lastName: String,
