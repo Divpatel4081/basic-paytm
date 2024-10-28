@@ -90,7 +90,7 @@ router.post("/signin" , async (req,res) => {
 const updateSchema = zod.object({
     firstName: zod.string().optional(),
     lastName: zod.string().optional(),
-    username: zod.string(),optional(),
+    username: zod.string().optional()
 })
 
 router.put('/', authMiddleware , async (req,res) => {
