@@ -50,4 +50,40 @@ router.post("/signup", async (req,res) => {
 
 })
 
+//sign-in route
+const signInSchema = zod.object({
+    username:zod.string().email(),
+    password:zod.string().min(6),
+})
+router.post("/signin" , async (req,res) => {
+    const body = req.body;
+    //input validation
+    const {success} =signInSchema.safeParse(body);
+    if(!success){
+        return res.json({
+            message:"Please enter valid input"
+        })
+    }
+
+    //cheking the user is already exists
+    const dbUser = await User.findOne({
+        username:body.username
+    })
+    if(!dbUser._id){
+        return res.json({
+            message:"Please sign-up first",
+        })   
+    }
+    
+    const token = jwt.sign({
+        userId: dbUser._id
+    },JWT_SECRET);
+
+    return res.json({
+        message:"sign-In succefully",
+        token:token
+    })
+})
+
+
 module.exports = router;
