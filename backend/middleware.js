@@ -15,15 +15,17 @@ const authMiddleware = (req,res,next) => {
 
     try{
         const decoded = jwt.verify(token,JWT_SECRET);
-        if(decoded.uesrId){
-            req.uesrId = decoded.uesrId;
+        if(decoded){
+            req.userId = decoded.userId;
+            console.log("authentication is perfect",req.userId);
             next();
         }
         else{
             return res.json({
-                message:"problem in verifying token",
+                message:"check token properly",
             })
         }
+        
     }catch(e){
         return res.json({
             error: e,

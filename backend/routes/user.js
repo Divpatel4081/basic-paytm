@@ -33,6 +33,7 @@ router.post("/signup", async (req,res) => {
     const user = await User.findOne({
         username: body.username,   
     });
+    
     if(user){
         return res.json({
             message:"email already taken"
