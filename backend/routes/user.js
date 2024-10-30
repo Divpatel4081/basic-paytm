@@ -117,17 +117,17 @@ router.put('/', authMiddleware , async (req,res) => {
 
 //bulk queary
 router.get("/bulk" , async (req,res) => {
-    const filter = req.query.filter;
+    const filter = req.query.filter || "";
     const users = await User.find({
         $or:[
             {
                 firstName: {
-                    $regex: filter
+                    "$regex": filter
                 }
             },
             {
                 lastName:{
-                    $regex:filter
+                    "$regex":filter
                 }
             }
         ]
@@ -138,8 +138,28 @@ router.get("/bulk" , async (req,res) => {
                 username:user.username,
                 firstName: user.firstName,
                 lastName: user.lastName,
+                _id:user._id
             }
         })
+    })
+})
+
+
+
+//personal query
+router.get('/me' , authMiddleware , async (req, res) => {
+    const userId = await req.userId;
+    console.log(userId);
+    const accountDetail = await Account.findOne({
+        userId:userId,
+    })
+    const user = await User.findById({
+        _id:userId,
+    })
+    
+    res.json({ 
+        accountDetail,
+        user
     })
 })
 

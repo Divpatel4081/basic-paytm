@@ -6,8 +6,9 @@ const cors = require("cors");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/api/v1",mainRouter);
 app.use(cors());
+app.use("/api/v1",mainRouter);
+
 
 
 app.listen(3000,() => {
