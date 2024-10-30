@@ -27,23 +27,6 @@ This is a full-stack application that allows users to sign up, log in, send mone
 - ********Backend********: Node.js with Express.js
 - ********Database********: MongoDB (via Mongoose)
 
-**##** **Project Structure**
-
-```markdown
-basic-paytm/
-│
-├── app.js               # Main Express.js server setup
-├── client/              # React frontend
-├── config.js            # Configuration for Paytm and MongoDB
-├── PaytmChecksum.js     # Checksum utility for secure payments
-├── models/              # MongoDB models (User, Transactions)
-├── routes/              # API routes for authentication, transactions
-├── controllers/         # Request handling logic for routes
-├── public/              # Static assets
-├── package.json         # Project dependencies
-└── README.md            # Project documentation
-
-
 **##** **Installation**
 
 1. ********Clone the repository********:
