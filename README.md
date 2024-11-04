@@ -1,8 +1,8 @@
-**#** **Basic Paytm App**
+# **Basic Paytm App**
 
 This is a full-stack application that allows users to sign up, log in, send money, and check their account balance. It integrates the Paytm payment gateway for secure transactions. The project is built using React for the frontend, Node.js with Express for the backend, and MongoDB for database storage.
 
-**##** **Table of Contents**
+## **Table of Contents**
 
 - [Features](__#features__)
 - [Tech Stack](__#tech-stack__)
@@ -15,19 +15,18 @@ This is a full-stack application that allows users to sign up, log in, send mone
 - [Security Considerations](__#security-considerations__)
 - [License](__#license__)
 
-**##** **Features**
+## **Features**
 
 - ********User Authentication********: Sign up and log in functionality for users to create accounts and securely access their profiles.
 - ********Send Money********: Users can transfer money to other accounts via Paytm.
 - ********Check Account Balance********: Users can view their current balance.
 
-**##** **Tech Stack**
+## **Tech Stack**
 
 - ********Frontend********: React
 - ********Backend********: Node.js with Express.js
 - ********Database********: MongoDB (via Mongoose)
-
-**##** **Installation**
+## **Installation**
 
 1. ********Clone the repository********:
    ```bash
